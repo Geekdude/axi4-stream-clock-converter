@@ -12,18 +12,21 @@ entity axis_clock_converter_tb is
 architecture testbench of axis_clock_converter_tb is
 
     COMPONENT axis_clock_converter
+        GENERIC (
+            DATA_WIDTH    : positive := 512
+        );
         PORT (
             areset_n      : IN  STD_LOGIC;
 
             s_axis_aclk   : IN  STD_LOGIC;
             s_axis_tvalid : IN  STD_LOGIC;
             s_axis_tready : OUT STD_LOGIC;
-            s_axis_tdata  : IN  STD_LOGIC_VECTOR(511 DOWNTO 0);
+            s_axis_tdata  : IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
 
             m_axis_aclk   : IN  STD_LOGIC;
             m_axis_tvalid : OUT STD_LOGIC;
             m_axis_tready : IN  STD_LOGIC;
-            m_axis_tdata  : OUT STD_LOGIC_VECTOR(511 DOWNTO 0)
+            m_axis_tdata  : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0)
         );
     END COMPONENT;
 
@@ -63,6 +66,9 @@ begin
     end process;
 
     clock_converter : axis_clock_converter
+    GENERIC MAP (
+        DATA_WIDTH    => 512
+    )
     PORT MAP (
         areset_n      => areset_n,
 

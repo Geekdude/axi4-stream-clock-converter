@@ -14,18 +14,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity axis_clock_converter is
+    GENERIC (
+        DATA_WIDTH  : positive := 512
+    );
     PORT (
         areset_n      : IN  STD_LOGIC;
 
         s_axis_aclk   : IN  STD_LOGIC;
         s_axis_tvalid : IN  STD_LOGIC;
         s_axis_tready : OUT STD_LOGIC;
-        s_axis_tdata  : IN  STD_LOGIC_VECTOR(511 DOWNTO 0);
+        s_axis_tdata  : IN  STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
 
         m_axis_aclk   : IN  STD_LOGIC;
         m_axis_tvalid : OUT STD_LOGIC;
         m_axis_tready : IN  STD_LOGIC;
-        m_axis_tdata  : OUT STD_LOGIC_VECTOR(511 DOWNTO 0)
+        m_axis_tdata  : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0)
     );
 end axis_clock_converter;
 
@@ -52,7 +55,7 @@ architecture Behavioral of axis_clock_converter is
     signal m_valid_toggle_f       : std_logic;
 
     signal s_ready                : std_logic;
-    signal s_data                 : std_logic_vector(511 downto 0 );
+    signal s_data                 : std_logic_vector(DATA_WIDTH-1 downto 0 );
 
     signal s_read_toggle          : std_logic;
     signal m_read_toggle          : std_logic;
