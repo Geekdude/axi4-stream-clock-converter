@@ -1,8 +1,28 @@
 # AXI4-Stream Clock Converter
 Designed by Aaron Young
 
-This repository contains a custom AXI4-Stream clock converter design I created using VHDL for my PhD dissertation to convert an [AXI4-Stream](https://static.docs.arm.com/ihi0051/a/IHI0051A_amba4_axi4_stream_v1_0_protocol_spec.pdf) from one clock domain to another clock domain using a bi-directional toggle synchronizer design. A detailed description of the design can be found in my dissertaion available at **URL HERE** in Section 7.3.2 starting on page 146. This clock convert is designed to have minimal latency and was shown to have less latency than the AXI4-Stream components included with Vivado.
+This repository contains a custom AXI4-Stream clock converter design I created using VHDL for my PhD dissertation to convert an [AXI4-Stream](https://static.docs.arm.com/ihi0051/a/IHI0051A_amba4_axi4_stream_v1_0_protocol_spec.pdf) from one clock domain to another clock domain using a bi-directional toggle synchronizer design. A detailed description of the design can be found in my dissertaion, [SNACC: The Scaled-up Neuromorphic Array Communications Controller](https://trace.tennessee.edu/utk_graddiss/5843/), in Section 7.3.2 starting on page 146. This clock convert is designed to have minimal latency and was shown to have less latency than the AXI4-Stream components included with Vivado.
 ![clock converter](img/snacc-clock-converter.png)
+
+## Citing
+
+If you use this repository, please cite my dissertation [SNACC: The Scaled-up Neuromorphic Array Communications Controller](https://trace.tennessee.edu/utk_graddiss/5843/).
+
+### Recommended Citation 
+
+Plain Text:
+
+    Young, Aaron Reed, "SNACC: The Scaled-up Neuromorphic Array Communications Controller. " PhD diss., University of Tennessee, 2020.
+    https://trace.tennessee.edu/utk_graddiss/5843
+
+Bibtex:
+
+    @PhdThesis{young_snacc,
+        author      = {Aaron Reed Young},
+        title       = {SNACC: The Scaled-up Neuromorphic Array Communications Controller},
+        date        = {2020},
+        institution = {University of Tennessee},
+    }
 
 ## Usage
 The AXI4-Stream clock converter converts an AXI4-Stream from one clock domain to another clock domain. The clock converter can work with any width of data and the `DATA_WIDTH` generic is use to specify the width of the tdata bus.
